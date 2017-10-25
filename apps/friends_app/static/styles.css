@@ -1,0 +1,57 @@
+#wrapper{
+    padding-top: 40px;
+    padding-left: 40px;
+    display: inline-block;
+}
+.register{
+    padding: 10px;
+    width: 220px;
+    position: relative;
+    bottom: -25px;
+    border: 2px solid black;
+    height: 550px;
+}
+.login{
+    width: 210px;
+    position: relative;
+    left: 300px;
+    bottom: 525px;
+    border: 2px solid black;
+    padding: 10px;
+    height: 230px;
+}
+.errors{
+    color: red;
+    width: 220px;
+    position: relative;
+    left: 600px;
+    bottom: 750px;
+}
+.home_button{
+    margin-top: 10px;
+    position: absolute;
+    right: 25px;
+    bottom: 10px;
+}
+.header_span{
+    position: relative;
+    left: 1000px;
+    top: -50px;
+
+}
+.non_friends{
+    position: relative;
+    top: 100px;
+}
+td, th{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.profile_span1{
+    position: relative;
+    left: 900px;
+}
+.profile_span2{
+    position: relative;
+    left: 920px;
+}

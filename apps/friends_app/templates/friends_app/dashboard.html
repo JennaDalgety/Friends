@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  {% load static %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static "styles.css" %}">
+  <style>
+
+  </style>
+  <script src="http://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>  
+  <script type="text/javascript">
+
+    (document).ready(function(){
+      console.log("jQuery has loaded properly")
+
+      
+
+    });
+
+    </script>
+  <title>Friends</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="header">
+            <h1>Hello, {{ user.alias }}!</h1>
+            <span class="header_span"><a href="/clear">Logout</a></span>
+        </div>
+        <div class="friends_list">
+            <p>Here is the list of your friends:</p>
+            <table border=1>
+            <thead>
+                <tr>
+                    <th>Alias</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for friend in all_friends %}
+                    <tr>
+                        <td>{{ friend.alias }}</td>
+                        <td><a href="/user/{{ friend.id }}">View Profile</a> | <a href="/destroy/{{ friend.id }}">Remove as Friend</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <div class="non_friends">
+            <p>Other Users not on your friends list:</p>
+            <table border=1>
+            <thead>
+                <tr>
+                    <th>Alias</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for non_friend in all_non_friends %}
+                    <tr>
+                        <td><a href="user/{{ non_friend.id }}">{{ non_friend.alias }}</a></td>
+                        <td>
+                            <form action="/add_friend" method="POST" accept-charset="utf-8">
+                            {% csrf_token %}
+                            <input type="hidden" name="friend_id" value="{{ non_friend.id }}">
+                            <input type="submit" name="add_friend" value="Add as Friend">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+</body>
+</html>
